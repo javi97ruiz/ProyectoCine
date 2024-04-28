@@ -1,5 +1,9 @@
 package org.example
 
+import org.example.sala.models.Sala
+
 fun main() {
-    println("Hello World!")
+    val sala = Sala()
+    sala.printSala()
+
 }
