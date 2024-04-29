@@ -50,6 +50,7 @@ class VentasRepositoryImpl(
             }
             return null
         }
+
     /**
      * Funcion que guarda una venta
      * @author Javier Ruiz
@@ -58,6 +59,7 @@ class VentasRepositoryImpl(
      * @see VentasRepository
      * @return Devuelve la venta guardada
      */
+
         override fun save(venta: Venta): Venta {
             log.debug { "Guardando venta: $venta" }
             db.transaction {
@@ -69,6 +71,7 @@ class VentasRepositoryImpl(
                     updated_at = venta.updatedAt.toString()
                 )
             }
+
             venta.lineas.forEach {
                 db.transaction {
                     db.insertLineaVenta(
