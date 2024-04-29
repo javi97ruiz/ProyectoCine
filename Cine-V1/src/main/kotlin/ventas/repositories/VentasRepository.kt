@@ -8,5 +8,5 @@ interface VentasRepository {
     fun findById(id: UUID): Venta?
     fun save(venta: Venta): Venta
     fun update(id: UUID, venta: Venta): Venta?
-    fun delete(id: UUID): Venta?
+    fun delete(id: UUID, venta: Venta): Venta?
 }
