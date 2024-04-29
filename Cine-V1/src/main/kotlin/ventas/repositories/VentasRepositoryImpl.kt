@@ -11,6 +11,13 @@ import org.lighthousegames.logging.logging
 import java.util.*
 
     private val log = logging()
+
+/**
+ * Clase que representa las operaciones del repository de ventas
+ * @author Javier Ruiz
+ * @since 1.0.0
+ * @param db representa las operaciones de query de la base de datos
+ */
 @Singleton
 class VentasRepositoryImpl(
     private val dbManager: SqlDeLightManager,
@@ -20,6 +27,14 @@ class VentasRepositoryImpl(
 
     private val db = dbManager.databaseQueries
 
+    /**
+     * Funcion que devuelve una venta en base a un id
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @see VentasRepositoryImpl
+     * @see VentasRepository
+     * @return Devuelve la venta si la encuentra o nulo si no existe
+     */
     override fun findById(id: UUID): Venta? {
     log.debug { "Obteniendo venta por id: $id" }
         if (db.existsVenta(id.toString()).executeAsOne()) {
@@ -35,7 +50,14 @@ class VentasRepositoryImpl(
             }
             return null
         }
-
+    /**
+     * Funcion que guarda una venta
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @see VentasRepositoryImpl
+     * @see VentasRepository
+     * @return Devuelve la venta guardada
+     */
         override fun save(venta: Venta): Venta {
             log.debug { "Guardando venta: $venta" }
             db.transaction {
@@ -61,7 +83,14 @@ class VentasRepositoryImpl(
             }
             return venta
         }
-
+    /**
+     * Funcion que actualiza una venta en base a un id
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @see VentasRepositoryImpl
+     * @see VentasRepository
+     * @return Devuelve la venta modificada o nulo si no existe
+     */
         override fun update(id: UUID, venta: Venta): Venta? {
             findById(id)
             log.debug { "Actualizando venta: $venta" }
@@ -91,7 +120,14 @@ class VentasRepositoryImpl(
             }
             return venta
         }
-
+    /**
+     * Funcion que elimina logicamente una venta en base a un id
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @see VentasRepositoryImpl
+     * @see VentasRepository
+     * @return Devuelve la venta eliminada o un nulo si no existe
+     */
             override fun delete(id: UUID, venta: Venta): Venta? {
                 findById(id)
                 log.debug { "Borrando venta con id: $id" }
