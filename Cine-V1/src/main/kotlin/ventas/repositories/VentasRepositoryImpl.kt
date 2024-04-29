@@ -36,6 +36,7 @@ class VentasRepositoryImpl(
             return null
         }
 
+
         override fun save(venta: Venta): Venta {
             log.debug { "Guardando venta: $venta" }
             db.transaction {
@@ -47,6 +48,7 @@ class VentasRepositoryImpl(
                     updated_at = venta.updatedAt.toString()
                 )
             }
+
             venta.lineas.forEach {
                 db.transaction {
                     db.insertLineaVenta(
