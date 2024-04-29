@@ -8,6 +8,19 @@ import java.time.LocalDateTime
 
 private val log = logging()
 
+/**
+ * Clase que realiza las operacion del repositorio relacionadas con los productos
+ * @author Javier Ruiz
+ * @since 1.0.0
+ * @see ProductosRepository
+ * @see findAll
+ * @see findById
+ * @see findByCategoria
+ * @see save
+ * @see update
+ * @see delete
+ * @param db representa las queries de la base de datos
+ */
 @Singleton
 class ProductosRepositoryImpl(
     private val dbManager: SqlDeLightManager
@@ -16,7 +29,10 @@ class ProductosRepositoryImpl(
     private val db = dbManager.databaseQueries
 
     /**
-     * Obtiene todos los productos de la base de datos
+     * Funcion que busca todos los productos
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @return Devuelve una lista con todos los productos
      */
     override fun findAll(): List<Producto> {
         log.debug { "Obteniendo todos los productos" }
@@ -26,7 +42,10 @@ class ProductosRepositoryImpl(
     }
 
     /**
-     * Obtiene un producto por id
+     * Funcion que busca un producto en base a un id
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @return Devuelve el producto si lo ha encontrado o nulo si no existe
      */
     override fun findById(id: String): Producto? {
         log.debug { "Obteniendo producto por id: $id" }
@@ -36,7 +55,10 @@ class ProductosRepositoryImpl(
     }
 
     /**
-     * Obtiene productos por categoría
+     * Funcion que busca en base a una categoria
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @return Devuelve la lista de productos de una categoria
      */
     override fun findByCategoria(categoria: String): List<Producto> {
         log.debug { "Obteniendo productos por categoría: $categoria" }
@@ -46,7 +68,12 @@ class ProductosRepositoryImpl(
     }
 
     /**
-     * Guarda un producto en la base de datos
+     * Funcion que guarda un producto
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @see ProductosRepositoryImpl
+     * @see ProductosRepository
+     * @return Devuelve el producto guardado
      */
     override fun save(producto: Producto): Producto {
         log.debug { "Guardando producto: $producto" }
@@ -72,7 +99,10 @@ class ProductosRepositoryImpl(
     }
 
     /**
-     * Actualiza un producto en la base de datos
+     * Funcion que actualiza un producto en base a un id
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @return Devuelve el producto modificado o nulo si no existe
      */
     override fun update(id: String, producto: Producto): Producto? {
         log.debug { "Actualizando producto por id: $id" }
@@ -101,7 +131,12 @@ class ProductosRepositoryImpl(
     }
 
     /**
-     * Borra un producto de la base de datos
+     * Funcion que elimina un producto en base a un id
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @see ProductosRepositoryImpl
+     * @see ProductosRepository
+     * @return Devuelve el producto eliminado o nulo si no existe
      */
     override fun delete(id: String): Producto? {
         log.debug { "Borrando producto por id: $id" }

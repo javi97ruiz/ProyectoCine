@@ -1,9 +1,21 @@
 package org.example.productos.models
 
-
+/**
+ * Clase que representa los complementos que se pueden añadir a la entrada
+ * @author Javier Ruiz
+ * @since 1.0.0
+ * @see Producto
+ * @param categoria representa el tipo de complemento seleccionado.
+ */
 class Complementos(elegible: Elegible): Producto() {
     val categoria: Elegible = elegirComplemento()
 
+    /**
+     * Funcion que nos indica el tipo de complemento que vamos a añadir.
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @return Devuelve el complemento elegido
+     */
     fun elegirComplemento(): Elegible{
         println("Por favor elija si quiere un producto de la lista o si desea continuar sin complementos:")
         println("\n1.- Agua" +
@@ -29,6 +41,11 @@ class Complementos(elegible: Elegible): Producto() {
     }
 }
 
+/**
+ * Clase que nos indica el complemento que vamos a añadir y su precio
+ * @author Javier Ruiz
+ * @since 1.0.0
+ */
 enum class Elegible(val Precio: String) {
     AGUA("2"),
     REFRESCOS("3"),

@@ -7,6 +7,14 @@ import org.lighthousegames.logging.logging
 
 private val log = logging()
 
+/**
+ * Clase que sirve para inicializar la base de datos
+ * @author Javier Ruiz
+ * @since 1.0.0
+ * @param databaseUrl representa la url que tendra la base de datos
+ * @param databaseInitData es por si se quiere iniciar la base de datos con datos de prueba
+ * @param databaseInMemory sirve para cambiar la base de datos de un archivo a memoria.
+ */
 class SqlDeLightManager(
 
     private val _databaseUrl: String = "jdbc:sqlite:cine.db",
@@ -24,6 +32,12 @@ class SqlDeLightManager(
         initialize()
     }
 
+    /**
+     * Funcion para inicializar la base de datos y crearla
+     * @author Javier Ruiz
+     * @since 1.0.0
+     * @return devuelve las consultas para la base de datos
+     */
     private fun initQueries(): DatabaseQueries {
 
         return if (databaseInMemory) {
@@ -41,12 +55,22 @@ class SqlDeLightManager(
 
     }
 
+    /**
+     * Funcion que borra todas las tablas para que esten en blanco.
+     * @author Javier Ruiz
+     * @since 1.0.0
+     */
     fun initialize() {
         if (databaseInitData) {
             removeAllData()
         }
     }
 
+    /**
+     * Funcion que borra todas las tablas
+     * @author Javier Ruiz
+     * @since 1.0.0
+     */
     // limpiamos las tablas
     private fun removeAllData() {
         log.debug { "SqlDeLightClient.removeAllData()" }
